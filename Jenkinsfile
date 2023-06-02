@@ -22,7 +22,7 @@ agent any
 		{
 			steps
 			{
-			sh 'docker build -t mrnithinthomas/Home:${BUILD_NUMBER} .'
+			sh 'docker build -t mrnithinthomas/home:${BUILD_NUMBER} .'
 			}
 		}
 		stage('Docker Image Push')
@@ -35,7 +35,7 @@ agent any
 					{
                    			sh 'docker login -u mrnithinthomas -p ${dockerhubpwd}'
 					}
-                   		sh 'docker push mrnithinthomas/Home:${BUILD_NUMBER}'
+                   		sh 'docker push mrnithinthomas/home:${BUILD_NUMBER}'
 				}
 			}
 		
@@ -50,7 +50,7 @@ agent any
                     			{
                         		sh 'echo lsof -i :${Host_Port}'
                         		sh 'echo Port ${Host_Port} is available'
-					sh 'docker run -d -p ${Host_Port}:8080 --name Home_${BUILD_NUMBER} mrnithinthomas/Home:${BUILD_NUMBER}'
+					sh 'docker run -d -p ${Host_Port}:8080 --name Home_${BUILD_NUMBER} mrnithinthomas/home:${BUILD_NUMBER}'
                     			} 
                     			catch (Exception e) 
                     			{
