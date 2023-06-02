@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: Home-Deployment
+  name: home-deployment
 spec:
   replicas: 3  #Number of replicas that will be created for this deployment
   selector:
     matchLabels:
-      app: Home-pod
+      app: home-pod
   template:
     metadata:
       labels:
-        app: Home-pod
+        app: home-pod
     spec:
       containers:
-        - name: Home
+        - name: home
           image: mrnithinthomas/home:latest # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
